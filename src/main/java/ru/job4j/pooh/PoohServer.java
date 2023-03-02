@@ -32,7 +32,6 @@ public class PoohServer {
                         String ls = System.lineSeparator();
                         out.write(("HTTP/1.1 " + resp.status() + ls + ls).getBytes());
                         out.write((resp.text().concat(ls)).getBytes());
-                        System.out.println(resp.text().concat(ls));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
