@@ -12,7 +12,7 @@ public class TopicService implements Service {
         String text = "No result!";
         String status = "204";
         if (POST.equals(req.httpRequestType())) {
-            ConcurrentHashMap<String, ConcurrentLinkedQueue<String>> queue = topics.get(req.getSourceName());
+            ConcurrentHashMap<String, ConcurrentLinkedQueue<String>> queue = topics.getOrDefault(req.getSourceName(), new ConcurrentHashMap<>());
             if (queue != null) {
                 queue.keySet().forEach(key -> queue.get(key).add(req.getParam()));
                 text = "";
